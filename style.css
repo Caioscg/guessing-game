@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    
+    background: linear-gradient(107.56deg, #00DDFB 0%, #00709F 100%); /*TODO tentar por o circle gradient*/
+    height: 100vh;
+}
+
+.game {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 4.8rem 6.4rem 6.4rem;
+    text-align: center;
+
+    background-color: white;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 2.4rem;
+
+    color: #34355B;
+}
+
+p {
+    font-size: 1.6rem;
+    line-height: 150%;
+    
+    color: rgba(52, 53, 91, 0.8);
+
+    margin-top: 1.6rem;
+}
+
+.guesses {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 4.8rem;
+}
+
+input {
+    outline: 0;
+    border: 0;
+    padding: 1.6rem;
+
+    background: #DCE2E9;
+    border-radius: 4px 0px 0px 4px;
+
+    width: 4.3rem;
+    height: 5.3rem;
+}
+
+button {
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 2.1rem;
+    color: white;
+
+    padding: 1.6rem;
+
+    background: #7879F1;
+    border-radius: 0px 4px 4px 0px;
+    border: 0;
+}
