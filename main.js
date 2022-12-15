@@ -1,42 +1,49 @@
 const guess = document.querySelector("#number")
-const guessButton = document.querySelector("button")
+const btnTry = document.querySelector("#btnTry")
+const btnReset = document.querySelector("#btnReset")
 const h1 = document.querySelector("h1")
+const h2 = document.querySelector("h2")
 const p = document.querySelector("p")
-const guesses = document.querySelector(".guesses")
+const guesses = document.querySelector("form")
+
+const screen1 = document.querySelector(".screen1")
+const screen2 = document.querySelector(".screen2")
 
 let attempts = 1
-let restart = 0
 
 random = getRandom()
-guessButton.addEventListener("click", (e) => {
-    e.preventDefault()
-    if (restart === 1) {   // click on playAgain button
-        reset()
-        return
+
+//* ------ events ------ *//
+
+btnTry.addEventListener('click', handleTryClick)
+btnReset.addEventListener('click', handleResetClick)
+document.addEventListener('keydown', function(e) {
+    if(e.key == 'Enter' && screen1.classList.contains('hide')) {
+        handleResetClick()
     }
+})
+
+//* ------ functions ------ *//
+
+function getRandom() {
+    return Math.round(Math.random() * 10)
+}
+
+function handleTryClick(e) {
+    e.preventDefault()
 
     if(guess.value == "") return  // guessing without picking a number
 
     if (guess.value == random) {  // correct guess
+        toggleScreen()
+
         if (attempts === 1) {
-            h1.innerText = `Acertou em ${attempts} tentativa`   // first attempt
+            h2.innerText = `Acertou em ${attempts} tentativa`   // first attempt
         }
         else {
-            h1.innerText = `Acertou em ${attempts} tentativas` // more attempts
+            h2.innerText = `Acertou em ${attempts} tentativas` // more attempts
         }
 
-        h1.style.fontFamily = 'DM Sans'
-        h1.style.fontWeight = "normal"
-        h1.style.lineHeight = "150%"
-
-        p.style.display = "none"
-        guess.style.display = "none"
-
-        guessButton.innerText = "Jogar novamente"
-        guessButton.style.borderRadius = "4px"
-        guesses.style.marginTop = "3.3rem"
-
-        restart = 1
     }
     else {  // wrong guess
         guess.value = ""
@@ -47,34 +54,16 @@ guessButton.addEventListener("click", (e) => {
             guess.style.border = "0"
         }, 700)
     }
-})
-
-//* ------ Random number generator ------
-
-function getRandom() {
-    return Math.round(Math.random() * 10)
 }
 
-//* ------ Play Again button ------
-
-function reset() {
-    h1.innerText = "Jogo da Adivinhação"
-    h1.style.fontFamily = 'Montserrat'
-    h1.style.fontWeight = "600"
-    h1.style.lineHeight = "2.4rem"
-
-    p.style.display = "block"
-    guess.style.display = "block"
-    guess.value = ""
-    guess.style.border = "0"
-
-    guessButton.innerText = "Tentar"
-    guessButton.style.borderRadius = "0px 4px 4px 0px"
-
-    guesses.style.marginTop = "4.8rem"
-
+function handleResetClick() {
+    toggleScreen()
     attempts = 1
-    restart = 0
-
     random = getRandom()
+    guess.value = ""
+}
+
+function toggleScreen() {
+    screen1.classList.toggle("hide")
+    screen2.classList.toggle("hide")
 }
