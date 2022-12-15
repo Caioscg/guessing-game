@@ -27,6 +27,8 @@ body {
     background-color: white;
     box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
     border-radius: 6px;
+
+    width: min(42.8rem, 90%);  /* fica em 48.8rem, mas se a tela ficar pequena e 42.8rem nao couber ele mantém nos 90% */
 }
 
 h1 {
@@ -42,12 +44,13 @@ p {
     font-size: 1.6rem;
     line-height: 150%;
     
-    color: rgba(52, 53, 91, 0.8);
+    color: #34355B;
+    opacity: 0.8;
 
     margin-top: 1.6rem;
 }
 
-.guesses {
+form {
     display: flex;
     justify-content: center;
 
@@ -63,11 +66,12 @@ input {
     background: #DCE2E9;
     border-radius: 4px 0px 0px 4px;
 
-    width: 4.3rem;
-    height: 5.3rem;
+    width: 6rem;
+    
 }
 
 button {
+    font-family: 'DM Sans', sans-serif;  /* button nao pega do body */
     font-weight: 700;
     font-size: 1.6rem;
     line-height: 2.1rem;
@@ -85,5 +89,4 @@ button {
 
 button:hover {
     background-color: #5353e9;
-    transition: background-color 0.5s;
 }

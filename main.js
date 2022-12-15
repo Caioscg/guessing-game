@@ -8,7 +8,8 @@ let attempts = 1
 let restart = 0
 
 random = getRandom()
-guessButton.addEventListener("click", () => {
+guessButton.addEventListener("click", (e) => {
+    e.preventDefault()
     if (restart === 1) {   // click on playAgain button
         reset()
         return
@@ -44,7 +45,7 @@ guessButton.addEventListener("click", () => {
         guess.style.border = "1px solid #FF1010"
         setTimeout(() => {
             guess.style.border = "0"
-        }, 1000)
+        }, 700)
     }
 })
 
